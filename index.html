@@ -10,13 +10,15 @@
     <button onclick="sendMessage()">Send</button>
 
     <script>
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1454007478667972670/x45xeelb7Xb37h5kUXkXCZ-FKuCuKdG5W-bOpJgqbwH57Rc3H2EmltwhH9JrrDuxi5dJ";
+
         function sendMessage() {
             const text = document.getElementById("msg").value;
 
-            fetch("http://localhost:3000/send", {
+            fetch(WEBHOOK_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: text })
+                body: JSON.stringify({ content: text })
             });
         }
     </script>
