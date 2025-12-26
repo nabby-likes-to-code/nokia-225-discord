@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Nokia Discord</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <button onclick="onClick()">Click me!</button>
-        <p id="output"></p>
+<head>
+    <title>Send Message to Discord</title>
+</head>
+<body>
+    <h1>Send a Message to Discord</h1>
 
-        <!-- Load JS last -->
-        <script src="script.js"></script>
-    </body>
+    <input id="msg" type="text" placeholder="Type your message">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        function sendMessage() {
+            const text = document.getElementById("msg").value;
+
+            fetch("http://localhost:3000/send", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: text })
+            });
+        }
+    </script>
+</body>
 </html>
